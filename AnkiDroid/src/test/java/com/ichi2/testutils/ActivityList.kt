@@ -25,6 +25,8 @@ import com.ichi2.anki.SingleFragmentActivity
 import com.ichi2.anki.StudyOptionsActivity
 import com.ichi2.anki.account.AccountActivity
 import com.ichi2.anki.instantnoteeditor.InstantNoteEditorActivity
+import com.ichi2.anki.learning.LearningActivity
+import com.ichi2.anki.learning.SshSettingsActivity
 import com.ichi2.anki.multimedia.MultimediaActivity
 import com.ichi2.anki.notetype.ManageNotetypes
 import com.ichi2.anki.preferences.PreferencesActivity
@@ -80,6 +82,8 @@ object ActivityList {
             get(DeckPickerWidgetConfig::class.java),
             get(CardAnalysisWidgetConfig::class.java) { intentForWidgetConfig() },
             get(AccountActivity::class.java),
+            get(LearningActivity::class.java),
+            get(SshSettingsActivity::class.java),
         )
 
     private fun intentForCardTemplateBrowserAppearanceEditor(): Intent {

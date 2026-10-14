@@ -104,7 +104,12 @@
         android:enableOnBackInvokedCallback="true"
         android:manageSpaceActivity="com.ichi2.anki.ui.windows.managespace.ManageSpaceActivity"
         >
-        <activity android:name="com.ichi2.anki.learning.LearningActivity" android:exported="false" />
+        <!-- Seal learning: the WebView keeps lesson state across rotation, resize and keyboard changes. -->
+        <activity
+            android:name="com.ichi2.anki.learning.LearningActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.ichi2.anki.learning.SshSettingsActivity" android:exported="false" />
         <service android:name="com.ichi2.anki.learning.SshTunnelService" android:exported="false" android:foregroundServiceType="dataSync" />
         <!-- Probably because of a bug on the framework,
