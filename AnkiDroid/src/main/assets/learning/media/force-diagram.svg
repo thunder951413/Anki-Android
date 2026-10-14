@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="240" viewBox="0 0 600 240">
+  <rect width="600" height="240" rx="18" fill="#edf4fa"/>
+  <path d="M50 185H550" stroke="#8ca3b9" stroke-width="3"/>
+  <rect x="140" y="70" width="170" height="115" rx="10" fill="#bcd5f3" stroke="#286de0" stroke-width="3"/>
+  <path d="M310 120H520M520 120L492 103M520 120L492 137" stroke="#e46b42" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <text x="180" y="135" fill="#233b50" font-size="23" font-family="sans-serif">物体</text>
+  <text x="368" y="88" fill="#a24a29" font-size="24" font-family="sans-serif">合力 F</text>
+  <text x="48" y="220" fill="#60778d" font-size="16" font-family="sans-serif">力的方向示意图</text>
+</svg>

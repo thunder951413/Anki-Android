@@ -1,0 +1,561 @@
+{
+    "courses": [
+        {
+            "id": "english",
+            "name": "英语::日常表达",
+            "cards": [
+                {
+                    "id": "en-apple",
+                    "title": "apple 的含义",
+                    "ability": "识别与理解",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "meaning",
+                                "kind": "choice",
+                                "prompt": "听录音，句子中提到的是哪一种水果？",
+                                "options": [
+                                    "苹果",
+                                    "香蕉",
+                                    "橙子"
+                                ],
+                                "answer": 0,
+                                "hint": "它常用来举例讲解字母 A。",
+                                "explanation": "apple 表示苹果。an apple 表示一个苹果。",
+                                "audio": "an-apple.wav"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "en-sentence",
+                    "title": "表达拥有",
+                    "ability": "应用与解题",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "order",
+                                "kind": "order",
+                                "prompt": "把词块组成「我有一个苹果」。",
+                                "options": [
+                                    "I",
+                                    "have",
+                                    "an",
+                                    "apple"
+                                ],
+                                "answer": [
+                                    0,
+                                    1,
+                                    2,
+                                    3
+                                ],
+                                "explanation": "I have an apple. 主语 I 后接动词 have。apple 以元音音素开头，用 an。"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "en-listen",
+                    "title": "听清日常句子",
+                    "ability": "独立回忆",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "listen",
+                                "kind": "listen",
+                                "prompt": "听录音，写出听到的句子。",
+                                "audio": "an-apple.wav",
+                                "answers": [
+                                    "I have an apple."
+                                ],
+                                "ignorePunctuation": true,
+                                "explanation": "录音说的是 I have an apple. 注意 an 与 apple 连读。"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "en-speak",
+                    "title": "开口表达",
+                    "ability": "独立回忆",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "speak",
+                                "kind": "speak",
+                                "prompt": "朗读：I have an apple.",
+                                "answers": [
+                                    "I have an apple."
+                                ],
+                                "locale": "en-US",
+                                "ignorePunctuation": true,
+                                "explanation": "重点是把句子完整说出来。此处核对识别出的文字，不把文字识别结果当作发音质量评分。"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "chinese",
+            "name": "语文::诗文与理解",
+            "cards": [
+                {
+                    "id": "cn-poem",
+                    "title": "静夜思默写",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "recall",
+                                "kind": "cloze",
+                                "prompt": "床前明月光，________。",
+                                "answers": [
+                                    "疑是地上霜"
+                                ],
+                                "ignorePunctuation": true,
+                                "explanation": "李白《静夜思》：床前明月光，疑是地上霜。"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "cn-reading",
+                    "title": "文言文理解",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "meaning",
+                                "kind": "choice",
+                                "prompt": "这里的「说」应怎样理解？",
+                                "passage": "学而时习之，不亦说乎？",
+                                "options": [
+                                    "说话",
+                                    "愉悦",
+                                    "劝说"
+                                ],
+                                "answer": 1,
+                                "explanation": "这里的「说」通「悦」，表示愉快。全句表达学习并时常温习的喜悦。"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "cn-understand",
+                    "title": "诗歌中的情感",
+                    "ability": "应用与解题",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "explain",
+                                "kind": "self",
+                                "prompt": "《静夜思》表达了怎样的情感？结合诗中的一个动作说明。",
+                                "passage": "举头望明月，低头思故乡。",
+                                "explanation": "参考要点：表达对故乡的思念；结合「举头」「低头」或望月思乡的动作展开说明。表述可以不同，重点是情感判断与文本依据相联系。"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "history",
+            "name": "历史::时间与因果",
+            "cards": [
+                {
+                    "id": "hi-order",
+                    "title": "中国历史时间线",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "timeline",
+                                "kind": "order",
+                                "prompt": "按时间先后排列以下朝代。",
+                                "options": [
+                                    "秦",
+                                    "汉",
+                                    "唐",
+                                    "宋"
+                                ],
+                                "answer": [
+                                    0,
+                                    1,
+                                    2,
+                                    3
+                                ],
+                                "explanation": "这些朝代的先后关系是秦、汉、唐、宋。它们之间还存在其他朝代与分裂时期，并非连续相接。"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "hi-reason",
+                    "title": "史料中的证据",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "evidence",
+                                "kind": "choice",
+                                "prompt": "研究古代城市商业发展，哪项材料能提供最直接的证据？",
+                                "options": [
+                                    "同时代市场交易账簿",
+                                    "后人创作的传奇小说",
+                                    "没有出处的网络说法"
+                                ],
+                                "answer": 0,
+                                "explanation": "同时代交易账簿可提供商品、价格与交易活动的记录；还需考察来源及代表性，并与其他材料互证。"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "geography",
+            "name": "地理::区域与过程",
+            "cards": [
+                {
+                    "id": "ge-climate",
+                    "title": "气候特点配对",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "match",
+                                "kind": "match",
+                                "prompt": "把气候类型与典型特点配对。",
+                                "pairs": [
+                                    [
+                                        "热带雨林气候",
+                                        "全年高温多雨"
+                                    ],
+                                    [
+                                        "地中海气候",
+                                        "夏季炎热干燥，冬季温和多雨"
+                                    ],
+                                    [
+                                        "温带海洋性气候",
+                                        "全年温和湿润"
+                                    ]
+                                ],
+                                "explanation": "气候类型需要结合温度与降水的季节变化识别，不能只看年平均值。"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "ge-water",
+                    "title": "水循环过程",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "cycle",
+                                "kind": "order",
+                                "prompt": "将一个简化的海陆水循环过程排序。",
+                                "options": [
+                                    "海水蒸发",
+                                    "水汽输送",
+                                    "陆地降水",
+                                    "径流入海"
+                                ],
+                                "answer": [
+                                    0,
+                                    1,
+                                    2,
+                                    3
+                                ],
+                                "explanation": "海水蒸发后，水汽输送到陆地形成降水，部分水经径流回到海洋；真实水循环还有下渗等环节。"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "mathematics",
+            "name": "数学::分步推理",
+            "cards": [
+                {
+                    "id": "ma-equation",
+                    "title": "解一元一次方程",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "transform",
+                                "kind": "choice",
+                                "prompt": "解 2x + 3 = 11，首先应怎样变形？",
+                                "options": [
+                                    "两边同时减去 3",
+                                    "只在左边减去 3",
+                                    "两边同时加上 3"
+                                ],
+                                "answer": 0,
+                                "explanation": "等式两边做相同运算可保持相等，得到 2x = 8。"
+                            },
+                            {
+                                "id": "solve",
+                                "kind": "numeric",
+                                "prompt": "由 2x = 8 求 x。",
+                                "answer": 4,
+                                "tolerance": 0,
+                                "explanation": "两边同时除以 2，得到 x = 4。代回原式，2 × 4 + 3 = 11。"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "ma-concept",
+                    "title": "平方与平方根",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "root",
+                                "kind": "multiple",
+                                "prompt": "哪些数的平方等于 9？选择所有正确答案。",
+                                "options": [
+                                    "3",
+                                    "−3",
+                                    "9",
+                                    "0"
+                                ],
+                                "answer": [
+                                    0,
+                                    1
+                                ],
+                                "explanation": "3² = 9，(−3)² = 9。9 的算术平方根是 3，平方根则是 ±3。"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "physics",
+            "name": "物理::原理到计算",
+            "cards": [
+                {
+                    "id": "ph-force",
+                    "title": "牛顿第二定律",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "principle",
+                                "kind": "choice",
+                                "prompt": "质量为 2 kg 的物体受到 4 N 合力。求加速度应选哪个关系？",
+                                "options": [
+                                    "F = ma",
+                                    "v = s/t",
+                                    "ρ = m/V"
+                                ],
+                                "answer": 0,
+                                "hint": "关注合力、质量和加速度的关系。",
+                                "explanation": "使用牛顿第二定律 F = ma。题目给的是合力，因此可以直接代入。"
+                            },
+                            {
+                                "id": "formula",
+                                "kind": "choice",
+                                "prompt": "把 F = ma 变形成求加速度的式子。",
+                                "options": [
+                                    "a = F/m",
+                                    "a = Fm",
+                                    "a = m/F"
+                                ],
+                                "answer": 0,
+                                "explanation": "等式两边除以质量 m，得到 a = F/m。"
+                            },
+                            {
+                                "id": "number",
+                                "kind": "numeric",
+                                "prompt": "代入 4 N 和 2 kg，写出加速度及单位。",
+                                "answer": 2,
+                                "units": [
+                                    "m/s²",
+                                    "m/s^2"
+                                ],
+                                "tolerance": 0.01,
+                                "explanation": "a = 4 ÷ 2 = 2 m/s²。数值和单位都需要正确。"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "ph-direction",
+                    "title": "力的方向",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "direction",
+                                "kind": "hotspot",
+                                "prompt": "点击示意图中向右的合力箭头。",
+                                "image": "force-diagram.svg",
+                                "imageAlt": "矩形物体右侧有一条标为合力 F 的向右箭头。",
+                                "target": [
+                                    0.5,
+                                    0.32,
+                                    0.94,
+                                    0.65
+                                ],
+                                "explanation": "加速度方向与合力方向一致。该示意图的合力指向右侧。"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "chemistry",
+            "name": "化学::结构与计算",
+            "cards": [
+                {
+                    "id": "ch-water",
+                    "title": "水的化学式",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "formula",
+                                "kind": "typed",
+                                "prompt": "写出水的化学式。",
+                                "answers": [
+                                    "H2O",
+                                    "H₂O"
+                                ],
+                                "caseSensitive": true,
+                                "explanation": "水的化学式为 H₂O。每个水分子含两个氢原子和一个氧原子，元素符号区分大小写。"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "ch-mass",
+                    "title": "计算相对分子质量",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "count",
+                                "kind": "choice",
+                                "prompt": "计算 H₂O 的相对分子质量。若 H 为 1、O 为 16，应列哪个式子？",
+                                "options": [
+                                    "2 × 1 + 16",
+                                    "1 + 2 × 16",
+                                    "2 × (1 + 16)"
+                                ],
+                                "answer": 0,
+                                "explanation": "两个氢原子和一个氧原子，相加得到 2 × 1 + 16。"
+                            },
+                            {
+                                "id": "result",
+                                "kind": "numeric",
+                                "prompt": "写出按给定数值计算的水的相对分子质量。",
+                                "answer": 18,
+                                "tolerance": 0,
+                                "explanation": "2 × 1 + 16 = 18。相对分子质量是比值，不加克等质量单位。"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "biology",
+            "name": "生物::概念与关系",
+            "cards": [
+                {
+                    "id": "bi-cell",
+                    "title": "细胞结构配对",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "structure",
+                                "kind": "match",
+                                "prompt": "将细胞结构与主要功能配对。",
+                                "pairs": [
+                                    [
+                                        "细胞膜",
+                                        "控制物质进出细胞"
+                                    ],
+                                    [
+                                        "细胞核",
+                                        "储存主要遗传信息"
+                                    ],
+                                    [
+                                        "线粒体",
+                                        "与有氧呼吸及能量转换有关"
+                                    ]
+                                ],
+                                "explanation": "结构与功能相联系。不同细胞的结构组成存在差异，不能把某一种细胞的特点推广到所有细胞。"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "bi-food",
+                    "title": "食物链关系",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "chain",
+                                "kind": "order",
+                                "prompt": "按被捕食者到捕食者的顺序排列一个简化食物链。",
+                                "options": [
+                                    "草",
+                                    "兔",
+                                    "狐"
+                                ],
+                                "answer": [
+                                    0,
+                                    1,
+                                    2
+                                ],
+                                "explanation": "草 → 兔 → 狐。箭头表示物质和能量传递方向，真实生态系统中多条食物链交织成食物网。"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "computing",
+            "name": "信息技术::理解与应用",
+            "cards": [
+                {
+                    "id": "cs-algorithm",
+                    "title": "二分查找的前提",
+                    "exercise": {
+                        "version": 1,
+                        "steps": [
+                            {
+                                "id": "condition",
+                                "kind": "choice",
+                                "prompt": "通常在数组上进行二分查找，必须满足什么条件？",
+                                "options": [
+                                    "数组按比较规则有序",
+                                    "数组中的数都是正数",
+                                    "数组长度是偶数"
+                                ],
+                                "answer": 0,
+                                "explanation": "二分查找依据大小关系排除一半区间，因此要求数据按同一比较规则有序。"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
