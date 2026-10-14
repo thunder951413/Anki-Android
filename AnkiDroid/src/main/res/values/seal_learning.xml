@@ -1,5 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
-<resources>
-    <string name="seal_learning_title">小海豹学习</string>
+<!-- Strings for the com.ichi2.anki.learning package. Kept in their own file so upstream rebases do not conflict. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="seal_learning_title">Seal learning</string>
+    <string name="seal_learning_error_deck_missing">This deck no longer exists.</string>
+    <string name="seal_learning_error_fsrs_required">Turn on FSRS in the review settings before starting a lesson.</string>
+    <string name="seal_learning_error_not_interactive">Only interactive learning cards can be submitted.</string>
+    <string name="seal_learning_error_unsupported_template">This card template is not supported.</string>
+    <string name="seal_learning_error_invalid_submission">Invalid submission.</string>
+    <string name="seal_learning_error_stale_reviewed">This card was reviewed elsewhere. Refresh the course to continue.</string>
+    <string name="seal_learning_error_stale_edited">This card was edited. Refresh the course to continue.</string>
+    <string name="seal_learning_error_custom_data_full">The card\'s custom data is full. Remove old add-on data first.</string>
+    <string name="seal_learning_error_unknown_action">Unknown action.</string>
+    <string name="seal_learning_error_generic">Something went wrong. Please try again.</string>
+    <string name="seal_learning_speech_none">No speech recognised. Try again or type the answer.</string>
+    <string name="seal_learning_speech_busy">Speech recognition is already running.</string>
+    <string name="seal_learning_speech_unavailable">No speech recognition service on this device. Type the answer instead.</string>
+    <string name="seal_ssh_title">SSH sync tunnel</string>
+    <string name="seal_ssh_intro">Connects AnkiDroid to your self-hosted sync server through SSH. While connected, sync uses the tunnel; when you disconnect, your previous sync server and login are restored.</string>
+    <string name="seal_ssh_setup_title">First-time setup (for parents)</string>
+    <string name="seal_ssh_setup_steps">1. On a computer, run: ssh-keyscan -p PORT SERVER &gt; known_hosts, and check the fingerprint with the server owner.\n2. Send known_hosts (and optionally a private key) to this phone and import them below.\n3. Fill in the server, then tap Connect.\n4. Back in the deck list, log in to your self-hosted sync account once. The login is remembered for this tunnel.</string>
+    <string name="seal_ssh_host">Server address</string>
+    <string name="seal_ssh_user">SSH user name</string>
+    <string name="seal_ssh_port">SSH port</string>
+    <string name="seal_ssh_remote_port">Sync service port on the server</string>
+    <string name="seal_ssh_secret">SSH password or key passphrase (not saved)</string>
+    <string name="seal_ssh_files">Identity files</string>
+    <string name="seal_ssh_known_hosts_ok">Server identity (known_hosts): imported</string>
+    <string name="seal_ssh_known_hosts_missing">Server identity (known_hosts): not imported — required</string>
+    <string name="seal_ssh_key_ok">Private key: stored encrypted on this device</string>
+    <string name="seal_ssh_key_missing">Private key: none — password login</string>
+    <string name="seal_ssh_import_key">Import SSH private key</string>
+    <string name="seal_ssh_import_hosts">Import verified known_hosts</string>
+    <string name="seal_ssh_delete_key">Delete private key, use password</string>
+    <string name="seal_ssh_delete_key_confirm">Delete the private key stored on this device?</string>
+    <string name="seal_ssh_connect">Connect via SSH</string>
+    <string name="seal_ssh_disconnect">Disconnect SSH</string>
+    <string name="seal_ssh_key_saved">Private key encrypted and saved on this device</string>
+    <string name="seal_ssh_key_deleted">Private key deleted</string>
+    <string name="seal_ssh_hosts_saved">Server identity file imported</string>
+    <string name="seal_ssh_import_failed">Import failed: %1$s</string>
+    <string name="seal_ssh_file_unreadable">The file cannot be read</string>
+    <string name="seal_ssh_invalid_key">The private key file size is invalid</string>
+    <string name="seal_ssh_invalid_hosts">This does not look like a known_hosts file</string>
+    <string name="seal_ssh_fill_required">Fill in the server and user name</string>
+    <string name="seal_ssh_port_range">Ports must be between 1 and 65535</string>
+    <string name="seal_ssh_need_known_hosts">Import a verified known_hosts file first.</string>
+    <string name="seal_ssh_need_secret">Enter the SSH password.</string>
+    <string name="seal_ssh_status_idle">Not connected</string>
+    <string name="seal_ssh_status_connecting">Connecting…</string>
+    <string name="seal_ssh_status_connected">Connected (local port %1$d). Go back to the deck list and sync.</string>
+    <string name="seal_ssh_status_reconnecting">Connection lost, reconnecting (%1$d/%2$d)…</string>
+    <string name="seal_ssh_status_failed">Connection failed: %1$s</string>
+    <string name="seal_ssh_status_timeout">The system time limit for the tunnel was reached. Connect again.</string>
+    <string name="seal_ssh_status_disconnected">Disconnected. Previous sync settings restored.</string>
+    <string name="seal_ssh_notification_channel">SSH sync tunnel</string>
+    <string name="seal_ssh_notification_title">Seal · SSH sync</string>
+    <string name="seal_ssh_notification_connected">Connected · tap to return to AnkiDroid and sync</string>
 </resources>
