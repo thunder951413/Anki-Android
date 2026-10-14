@@ -104,6 +104,9 @@
         android:enableOnBackInvokedCallback="true"
         android:manageSpaceActivity="com.ichi2.anki.ui.windows.managespace.ManageSpaceActivity"
         >
+        <activity android:name="com.ichi2.anki.learning.LearningActivity" android:exported="false" />
+        <activity android:name="com.ichi2.anki.learning.SshSettingsActivity" android:exported="false" />
+        <service android:name="com.ichi2.anki.learning.SshTunnelService" android:exported="false" android:foregroundServiceType="dataSync" />
         <!-- Probably because of a bug on the framework,
         the full package path is needed for manageSpaceActivity -->
         <activity

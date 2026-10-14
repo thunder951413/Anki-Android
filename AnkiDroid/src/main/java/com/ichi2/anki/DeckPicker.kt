@@ -1369,6 +1369,10 @@ open class DeckPicker :
             return true
         }
         when (item.itemId) {
+            R.id.action_seal_learning -> {
+                startActivity(Intent(this, com.ichi2.anki.learning.LearningActivity::class.java))
+                return true
+            }
             R.id.action_undo -> {
                 Timber.i("DeckPicker:: Undo button pressed")
                 undo()
