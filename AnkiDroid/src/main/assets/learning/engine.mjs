@@ -1,5 +1,6 @@
 // Copyright: Ankitects Pty Ltd and contributors
 // License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
+import { t } from "./i18n.mjs";
 
 export const ABILITIES = ["Recognition", "Recall", "Application"];
 export const KINDS = [
@@ -22,30 +23,30 @@ const requireValue = (valid, message) => {
 };
 
 export function validateExercise(exercise) {
-    requireValue(exercise?.version === 1, "练习版本必须为 1");
+    requireValue(exercise?.version === 1, t("validate.version"));
     requireValue(
         Array.isArray(exercise.steps) && exercise.steps.length >= 1 && exercise.steps.length <= 20,
-        "练习需要 1–20 个步骤",
+        t("validate.steps"),
     );
     const ids = new Set();
     for (const step of exercise.steps) {
-        requireValue(typeof step.id === "string" && step.id.length > 0 && !ids.has(step.id), "步骤 ID 必须唯一且非空");
+        requireValue(typeof step.id === "string" && step.id.length > 0 && !ids.has(step.id), t("validate.stepId"));
         ids.add(step.id);
-        requireValue(KINDS.includes(step.kind), `不支持的题型：${step.kind}`);
-        requireValue(typeof step.prompt === "string" && step.prompt.trim(), "每步需要题目");
-        requireValue(typeof step.explanation === "string" && step.explanation.trim(), "每步需要答案解释");
+        requireValue(KINDS.includes(step.kind), t("validate.kind", { kind: step.kind }));
+        requireValue(typeof step.prompt === "string" && step.prompt.trim(), t("validate.prompt"));
+        requireValue(typeof step.explanation === "string" && step.explanation.trim(), t("validate.explanation"));
         if (["choice", "multiple", "order"].includes(step.kind)) {
             requireValue(
                 Array.isArray(step.options) && step.options.length >= 2
                     && step.options.every((item) => typeof item === "string"),
-                "选项至少两项",
+                t("validate.options"),
             );
-            requireValue(new Set(step.options).size === step.options.length, "选项不能重复");
+            requireValue(new Set(step.options).size === step.options.length, t("validate.optionsUnique"));
         }
         if (step.kind === "choice") {
             requireValue(
                 Number.isInteger(step.answer) && step.answer >= 0 && step.answer < step.options.length,
-                "正确选项越界",
+                t("validate.choiceAnswer"),
             );
         }
         if (["multiple", "order"].includes(step.kind)) {
@@ -53,32 +54,32 @@ export function validateExercise(exercise) {
                 Array.isArray(step.answer) && step.answer.length > 0 && step.answer.every((item) =>
                     Number.isInteger(item) && item >= 0 && item < step.options.length
                 ) && new Set(step.answer).size === step.answer.length,
-                "答案选项无效",
+                t("validate.answerOptions"),
             );
             if (step.kind === "order") {
-                requireValue(step.answer.length === step.options.length, "排序答案需要包含所有选项");
+                requireValue(step.answer.length === step.options.length, t("validate.orderAll"));
             }
         }
         if (["typed", "cloze", "listen", "speak"].includes(step.kind)) {
             requireValue(
                 Array.isArray(step.answers) && step.answers.length
                     && step.answers.every((item) => typeof item === "string" && item.trim()),
-                "需要至少一个可接受答案",
+                t("validate.answers"),
             );
         }
         if (step.kind === "listen") {
-            requireValue(typeof step.audio === "string" && step.audio.length > 0, "听写需要音频文件");
+            requireValue(typeof step.audio === "string" && step.audio.length > 0, t("validate.audio"));
         }
         if (step.kind === "numeric") {
             requireValue(
                 finite(step.answer) && finite(step.tolerance ?? 0) && (step.tolerance ?? 0) >= 0,
-                "数值答案或容差无效",
+                t("validate.numeric"),
             );
             requireValue(
                 step.units === undefined
                     || (Array.isArray(step.units)
                         && step.units.every((item) => typeof item === "string" && item.trim())),
-                "单位列表无效",
+                t("validate.units"),
             );
         }
         if (step.kind === "match") {
@@ -88,11 +89,11 @@ export function validateExercise(exercise) {
                         Array.isArray(pair) && pair.length === 2
                         && pair.every((item) => typeof item === "string" && item.trim())
                     ),
-                "配对需要两组以上的文字对",
+                t("validate.pairs"),
             );
             requireValue(
                 [0, 1].every((side) => new Set(step.pairs.map((pair) => pair[side])).size === step.pairs.length),
-                "配对两侧的文字不能重复",
+                t("validate.pairsUnique"),
             );
         }
         if (step.kind === "hotspot") {
@@ -100,12 +101,12 @@ export function validateExercise(exercise) {
                 typeof step.image === "string" && step.image.length > 0 && Array.isArray(step.target)
                     && step.target.length === 4 && step.target.every((item) => finite(item) && item >= 0 && item <= 1)
                     && step.target[0] < step.target[2] && step.target[1] < step.target[3],
-                "图片区域需为归一化的 [左, 上, 右, 下]",
+                t("validate.hotspot"),
             );
         }
         for (const field of ["audio", "image"]) {
             if (step[field]) {
-                requireValue(!/[\\/]|\.\.|^[a-z]+:/i.test(step[field]), "媒体必须是 collection.media 中的文件名");
+                requireValue(!/[\\/]|\.\.|^[a-z]+:/i.test(step[field]), t("validate.media"));
             }
         }
     }
@@ -174,7 +175,7 @@ export function priority(card, now = Date.now()) {
     if (card.lastRating === 2) { weight = Math.max(60, weight); }
     weight = Math.round(Math.min(100, Math.max(0, weight)));
     const tier = weight >= 80 ? 4 : weight >= 60 ? 3 : weight >= 40 ? 2 : weight >= 20 ? 1 : 0;
-    return { weight, tier, label: ["稳定", "巩固", "到期复习", "重点复习", "优先回练"][tier], retrievability: recall };
+    return { weight, tier, key: `lesson.priority${tier}`, retrievability: recall };
 }
 
 export function planLesson(cards, { now = Date.now(), limit = 8 } = {}) {
@@ -190,13 +191,13 @@ export function planLesson(cards, { now = Date.now(), limit = 8 } = {}) {
     }).slice(0, limit);
 }
 
+const SNAPSHOT_VERSION = 1;
+
 export class LessonSession {
     constructor(cards, { now = () => Date.now() } = {}) {
         this.now = now;
         this.cards = new Map(
-            cards.map((
-                card,
-            ) => [card.id, {
+            cards.map((card) => [card.id, {
                 card,
                 stepIndex: 0,
                 attempts: [],
@@ -211,9 +212,16 @@ export class LessonSession {
         this.completed = 0;
         this.correct = 0;
         this.attempts = 0;
+        /** Finished cards in completion order: `{ id, title, rating }`. */
+        this.results = [];
     }
+
+    get total() {
+        return this.cards.size;
+    }
+
     next() {
-        requireValue(this.current === null, "先提交当前步骤再继续");
+        requireValue(this.current === null, t("engine.submitFirst"));
         const id = this.queue.shift();
         if (id === undefined) { return null; }
         const state = this.cards.get(id);
@@ -221,12 +229,14 @@ export class LessonSession {
         state.startedAt = this.now();
         return { card: state.card, step: state.card.exercise.steps[state.stepIndex], stepIndex: state.stepIndex };
     }
+
     hint() {
-        requireValue(this.current, "没有当前题目");
+        requireValue(this.current, t("engine.noCurrent"));
         this.current.hinted = true;
     }
+
     submit(response) {
-        requireValue(this.current, "没有当前题目");
+        requireValue(this.current, t("engine.noCurrent"));
         const state = this.current;
         const step = state.card.exercise.steps[state.stepIndex];
         const correct = grade(step, response);
@@ -235,13 +245,16 @@ export class LessonSession {
         this.attempts += 1;
         if (correct) { this.correct += 1; }
         else { state.failed = true; }
-        const exhausted = state.attempts[state.stepIndex] >= 3;
+        const exhausted = !correct && state.attempts[state.stepIndex] >= 3;
         if (correct || exhausted) { state.stepIndex += 1; }
         state.finished = state.stepIndex === state.card.exercise.steps.length;
         this.current = null;
         const retryGap = Math.min(2, this.queue.length);
-        if (state.finished) { this.completed += 1; }
-        else if (!correct && !exhausted) { this.queue.splice(Math.min(2, this.queue.length), 0, state.card.id); }
+        const rating = state.failed ? 1 : state.hinted ? 2 : 3;
+        if (state.finished) {
+            this.completed += 1;
+            this.results.push({ id: state.card.id, title: state.card.title, rating });
+        } else if (!correct && !exhausted) { this.queue.splice(retryGap, 0, state.card.id); }
         else { this.queue.unshift(state.card.id); }
         return {
             correct,
@@ -249,11 +262,56 @@ export class LessonSession {
             explanation: step.explanation,
             finished: state.finished,
             card: state.card,
-            rating: state.failed ? 1 : state.hinted ? 2 : 3,
-            attempts: state.attempts.reduce((sum, item) => sum + item, 0),
+            rating,
+            attempts: state.attempts.reduce((sum, item) => sum + (item ?? 0), 0),
             hinted: state.hinted,
             durationMs: state.durationMs,
             retryGap,
         };
+    }
+
+    /** Plain JSON that survives an app restart. An open question goes back to the front of the queue. */
+    snapshot() {
+        const queue = this.current ? [this.current.card.id, ...this.queue] : [...this.queue];
+        return {
+            version: SNAPSHOT_VERSION,
+            cards: [...this.cards.values()].map(({ startedAt, ...state }) => state),
+            queue,
+            completed: this.completed,
+            correct: this.correct,
+            attempts: this.attempts,
+            results: this.results,
+        };
+    }
+
+    /** Returns null for anything that is not a usable snapshot, so callers can simply start over. */
+    static restore(snapshot, options) {
+        try {
+            if (snapshot?.version !== SNAPSHOT_VERSION || !Array.isArray(snapshot.cards) || !Array.isArray(snapshot.queue)) {
+                return null;
+            }
+            const session = new LessonSession(snapshot.cards.map((state) => state.card), options);
+            for (const state of snapshot.cards) {
+                const target = session.cards.get(state.card.id);
+                Object.assign(target, {
+                    stepIndex: state.stepIndex,
+                    attempts: state.attempts ?? [],
+                    failed: !!state.failed,
+                    hinted: !!state.hinted,
+                    finished: !!state.finished,
+                    durationMs: state.durationMs ?? 0,
+                });
+                requireValue(target.stepIndex >= 0 && target.stepIndex <= state.card.exercise.steps.length, "snapshot");
+            }
+            requireValue(snapshot.queue.every((id) => session.cards.has(id) && !session.cards.get(id).finished), "snapshot");
+            session.queue = [...snapshot.queue];
+            session.completed = snapshot.completed ?? 0;
+            session.correct = snapshot.correct ?? 0;
+            session.attempts = snapshot.attempts ?? 0;
+            session.results = Array.isArray(snapshot.results) ? snapshot.results : [];
+            return session;
+        } catch {
+            return null;
+        }
     }
 }
